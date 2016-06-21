@@ -1,0 +1,33 @@
+$def with (content)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+    <head>
+        <title>Virtual EC2 Switch - $content.title </title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta http-equiv="refresh" content="10" />
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/vswitch.css" media="screen" charset="utf-8" />
+        $if content.cssfiles:
+            $for f in content.cssfiles.split():
+                <link rel="stylesheet" type="text/css" href="$f" media="screen" charset="utf-8" />
+        <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+
+    <div class="container">
+        $:content
+    </div>
+
+    $if content.jsfiles:
+        $for f in content.jsfiles.split():
+            <script src="$f" type="text/javascript" charset="utf-8"></script>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+$def with (data)
+
+$var title: Environments
+$var cssfiles: 
+$var jsfiles: /static/js/vswitch.js
+
+<h2>EC2 Environments</h2>
+
+$for env in data:
+  <h3>$env - $data[env]['env_state']</h3>
+  <p>
+    <button type="button" class="btn btn-success btn-lg" onclick="vswitch.toggle('$env',true);">Turn On</button>
+    <button type="button" class="btn btn-danger btn-lg" onclick="vswitch.toggle('$env',false);">Turn Off</button>
+  </p>
+    <table id="$env" class="table table-hover table-striped">
+    <tr>
+      <th>instance id</th>
+      <th>name</th>
+      <th>state</th>
+    </tr>
+    $for server in data[env]['servers']:
+      <tr class="$state(data[env]['servers'][server]['state'])">
+        <td>$server</td>
+        <td>$data[env]['servers'][server]['name']</td>
+        <td>$data[env]['servers'][server]['state']</td>
+      </tr>
+  </table>
